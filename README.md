@@ -1,5 +1,7 @@
-Xamarin Forms Labs
+**Xamarin Forms Labs** [![Build status](https://ci.appveyor.com/api/projects/status/33q2u1d3dpn3abgn?svg=true)](https://ci.appveyor.com/project/xlabs/xamarin-forms-labs)
 =====================
+
+[![Build status](https://ci.appveyor.com/api/projects/status/33q2u1d3dpn3abgn?svg=true)](https://ci.appveyor.com/project/xlabs/xamarin-forms-labs)
 
 **XLabs** is a open source project that aims to provide a powerful and cross platform set of services and controls tailored to work with Xamarin and [Xamarin Forms](http://xamarin.com/forms).
 
@@ -11,27 +13,28 @@ The v.2.0 is the stable branch.
 
 **Available controls**
 
- - [AutoComplete (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/AutoComplete)
- - [Calendar Control (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/Calendar-Control)
- - [Checkbox (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/Checkbox)
- - DynamicListView (beta)
+ - [AutoCompleteView (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/AutoCompleteView)
+ - [Calendar Control (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/Calendar-Control)
+ - [Checkbox (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/Checkbox-Control)
+ - [DynamicListView (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/DynamicListView)
  - ExtendedContentView (beta) 
- - [ExtendedEntry (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/ExtendedEntry)
- - [ExtendedLabel (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/ExtendedLabel)
- - ExtendedScrollView (IOS beta)
- - ExtendedTabbedPage  
- - [ExtendedTextCell (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/ExtendedTextCell)
- - [ExtendedViewCell (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/ExtendedViewCell)
- - [HybridWebView (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/HybridWebView)
- - GridView (IOS beta)
- - ImageButton (beta)
- - RadioButton(beta)
- - RepeaterView (beta)
- - [SegmentedControlView (IOS beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/SegmentedControl)
- - Web Image (beta) 
+ - [ExtendedEntry (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/ExtendedEntry)
+ - [ExtendedLabel (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/ExtendedLabel)
+ - [ExtendedScrollView (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/ExtendedScrollView)
+ - [ExtendedTabbedPage](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/ExtendedTabbedPage)  
+ - [ExtendedTextCell (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/ExtendedTextCell)
+ - [ExtendedViewCell (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/ExtendedViewCell)
+ - [HybridWebView (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/HybridWebView)
+ - GradientContentView (iOS/Android beta)
+ - [GridView (IOS beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/GridView)
+ - [ImageButton (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/ImageButton)
+ - RadioButton (beta)
+ - [RepeaterView (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/RepeaterView)
+ - [SegmentedControlView (IOS beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/SegmentedControl)
+ - [Web Image (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/WebImage)
  - IconButton (IOS beta)
- - [CircleImage (IOS/Android alpha)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/CircleImage)
- - HyperLinkLabel
+ - [CircleImage (IOS/Android alpha)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/CircleImage)
+ - [HyperLinkLabel](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/HyperLinkLabel)
 
 **Available services**
 
@@ -45,6 +48,7 @@ The v.2.0 is the stable branch.
  - SoundService
  - Text To Speech 
  - Secure Storage
+ - Settings
 
 
 **Available Mvvm helpers (Beta)**
@@ -60,7 +64,7 @@ The v.2.0 is the stable branch.
  - Caching (SQLLiteSimpleCache)
  - Dependency Injection containers (TinyIOC, Autofac, NInject, SimpleInjector, Unity)
  - Web (RestClient)
- - [Charting (Line, Bar & Pie) (Alpha)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/Charting)
+ - [Charting (Line, Bar & Pie) (Alpha)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/Charting)
  
 _________________
 
@@ -71,9 +75,9 @@ _________________
 We are working in a great [wiki][1] on how to use the controls and services. 
 
 
-https://github.com/XForms/Xamarin-Forms-Labs/wiki
+https://github.com/XLabs/Xamarin-Forms-Labs/wiki
 
-
+[Good forum post helping you setup and use XLabs](http://forums.xamarin.com/discussion/35991/how-to-install-setup-and-use-xlabs#latest)
 
 Using the MVVM Helpers
 -----------
@@ -169,7 +173,7 @@ ________________
 
 > Based in last developments (master)
 
-[Master- Xamarin Forms Labs Framework Helper for online use](http://htmlpreview.github.io/?https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Helper/master/Web/Index.html)
+[Master- XLabs Framework Helper for online use](http://htmlpreview.github.io/?https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Helper/master/Web/Index.html)
 
 [Master - Xamarin.Forms.Labs.chm file for offline use](https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/Helper/master/Xamarin.Forms.Labs.chm)
 ________________
@@ -239,7 +243,7 @@ _________________
 **CHAT**
 ======
 
-[Xamarin Forms Labs Chat room online on Jabbr ](https://jabbr.net/#/rooms/Xamarin-Labs)
+[XLabs Chat room online on Jabbr ](https://jabbr.net/#/rooms/Xamarin-Labs)
 
 __________________
 
@@ -251,7 +255,7 @@ License Apache 2.0 more about that in the [LICENSE][2] file.
 
 
 
-  [1]: https://github.com/XForms/Xamarin-Forms-Labs/wiki
+  [1]: https://github.com/XLabs/Xamarin-Forms-Labs/wiki
   [2]: https://github.com/XForms/XForms-Toolkit/blob/master/LICENSE
   
   

@@ -20,13 +20,16 @@ namespace Xlabs.Sample.WinUniversal
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class MainPage
     {
         public MainPage()
         {
+
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
+
+            this.LoadApplication(new XLabs.Sample.App());
         }
 
         /// <summary>
@@ -44,5 +47,6 @@ namespace Xlabs.Sample.WinUniversal
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
         }
+        
     }
 }

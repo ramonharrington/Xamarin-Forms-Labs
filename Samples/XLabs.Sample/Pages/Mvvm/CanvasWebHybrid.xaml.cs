@@ -1,79 +1,97 @@
-﻿using Xamarin.Forms;
-
-namespace XLabs.Sample.Pages.Mvvm
+﻿namespace XLabs.Sample.Pages.Mvvm
 {
-	using System.Linq;
+    using System;
+    using System.Collections.Specialized;
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Linq;
+    using Ioc;
+    using Platform.Device;
+    using ViewModel;
+    using Xamarin.Forms;
 
-	using XLabs.Forms.Mvvm;
-	using XLabs.Sample.ViewModel;
+    public partial class CanvasWebHybrid
+    {
+        private bool loaded;
 
-	public partial class CanvasWebHybrid : BaseView
-	{	
-		public CanvasWebHybrid ()
-		{
-			InitializeComponent ();
+        public CanvasWebHybrid ()
+        {
+            InitializeComponent ();
 
-		    this.NativeList.HeightRequest = Device.OnPlatform(250, 320, 150);
-		    this.hybridWebView.HeightRequest = Device.OnPlatform(300, 300, 400);
+            //this.NativeList.HeightRequest = Device.OnPlatform(250, 320, 150);
+            //this.hybridWebView.HeightRequest = Device.OnPlatform(300, 300, 400);
 
-			this.hybridWebView.RegisterCallback("dataCallback", t =>
-				System.Diagnostics.Debug.WriteLine(t)
-			);
+            this.hybridWebView.RegisterCallback("dataCallback", t =>
+                Debug.WriteLine(t)
+            );
 
-			this.hybridWebView.RegisterCallback("chartUpdated", t =>
-				System.Diagnostics.Debug.WriteLine(t)
-			);
+            this.hybridWebView.RegisterCallback("chartUpdated", t =>
+                Debug.WriteLine(t)
+            );
 
-			var model = ChartViewModel.Dummy;
+            var model = ChartViewModel.Dummy;
 
 
-			this.BindingContext = model;
+            this.BindingContext = model;
 
-			model.PropertyChanged += HandlePropertyChanged;
+            model.PropertyChanged += HandlePropertyChanged;
 
-			model.DataPoints.CollectionChanged += HandleCollectionChanged;
+            model.DataPoints.CollectionChanged += HandleCollectionChanged;
 
-			foreach (var datapoint in model.DataPoints)
-			{
-				datapoint.PropertyChanged += HandlePropertyChanged;
-			}
+            foreach (var datapoint in model.DataPoints)
+            {
+                datapoint.PropertyChanged += HandlePropertyChanged;
+            }
 
-			this.hybridWebView.LoadFinished += (s, e) =>
-			{
-				this.hybridWebView.CallJsFunction ("onViewModelData", this.BindingContext);
-			};
+            this.hybridWebView.LoadFinished += (s, e) =>
+            {
+                var display = Resolver.Resolve<IDisplay>();
 
-			this.hybridWebView.LeftSwipe += (s, e) =>
-				System.Diagnostics.Debug.WriteLine("Left swipe from HybridWebView");
+                var height = Device.OnPlatform(this.hybridWebView.Height * display.Scale, this.hybridWebView.Height,
+                    this.hybridWebView.Height * display.Scale);
 
-			this.hybridWebView.RightSwipe += (s, e) =>
-				System.Diagnostics.Debug.WriteLine("Right swipe from HybridWebView");
-		}
+                this.loaded = true;
+                this.hybridWebView.CallJsFunction("setChartHeight", height);
+                this.hybridWebView.CallJsFunction("onViewModelData", this.BindingContext);
+            };
 
-		void HandleCollectionChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-		{
-			foreach (var datapoint in e.NewItems.OfType<DataPoint>())
-			{
-				datapoint.PropertyChanged += HandlePropertyChanged;
-			}
+            this.hybridWebView.LeftSwipe += (s, e) =>
+                Debug.WriteLine("Left swipe from HybridWebView");
 
-			foreach (var datapoint in e.OldItems.OfType<DataPoint>())
-			{
-				datapoint.PropertyChanged -= HandlePropertyChanged;
-			}
-		}
+            this.hybridWebView.RightSwipe += (s, e) =>
+                Debug.WriteLine("Right swipe from HybridWebView");
 
-		void HandlePropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-		{
-			this.hybridWebView.CallJsFunction ("onViewModelData", this.BindingContext);
-		}
+            // this would not work as the control has not been loaded yet
+            // this.hybridWebView.LoadFromContent("HTML/home.html");
+        }
 
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
+        void HandleCollectionChanged (object sender, NotifyCollectionChangedEventArgs e)
+        {
+            foreach (var datapoint in e.NewItems.OfType<DataPoint>())
+            {
+                datapoint.PropertyChanged += HandlePropertyChanged;
+            }
 
-			this.hybridWebView.LoadFromContent("HTML/home.html");
-		}
-	}
+            foreach (var datapoint in e.OldItems.OfType<DataPoint>())
+            {
+                datapoint.PropertyChanged -= HandlePropertyChanged;
+            }
+        }
+
+        void HandlePropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (this.loaded)
+            {
+                this.hybridWebView.CallJsFunction("onViewModelData", this.BindingContext);
+            }
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            this.hybridWebView.LoadFromContent("HTML/home.html");
+        }
+    }
 }
 
